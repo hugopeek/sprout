@@ -1,0 +1,26 @@
+name: Sprout
+version: 0.1.1
+lowCaseName: sprout
+namespace: Sprout
+description: 'Lightweight site generator using static markdown files.'
+author: 'Hugo Peek'
+
+menus:
+  - text: sprout.menu.title
+    description: sprout.menu.description
+    action: manage
+
+chunks:
+  - name: sproutHead
+    file: head.tpl
+  - name: sproutMenu
+    file: menu.tpl
+  - name: sproutFooter
+    file: footer.tpl
+
+templates:
+  - name: sproutOverview
+    file: overview.tpl
+  - name: sproutArticle
+    file: article.tpl
+    icon: icon-pencil
