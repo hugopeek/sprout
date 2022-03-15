@@ -5,7 +5,7 @@
     [[$sproutHead]]
 </head>
 
-<body id="[[*alias]]">
+<body id="[[*alias]]" class="overview">
 
 [[$sproutMenu]]
 

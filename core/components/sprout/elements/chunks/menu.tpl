@@ -1,10 +1,11 @@
 <nav class="container-fluid">
     <ul>
-        <li><strong>Brand</strong></li>
+        <li><strong>[[++site_name]]</strong></li>
     </ul>
-    <ul>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#" role="button">Button</a></li>
-    </ul>
+    [[pdoMenu?
+        &startId=`0`
+        &level=`1`
+        &tplOuter=`@INLINE <ul>[[+wrapper]]</ul>`
+        &tpl=`@INLINE <li><a href="[[+link]]" [[+attributes]]>[[+menutitle]]</a></li>`
+    ]]
 </nav>
