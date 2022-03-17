@@ -1,4 +1,4 @@
-<title>[[++sprout.title_format]]</title>
+<title>[[*longtitle:empty=`[[*pagetitle]]`]]</title>
 
 <meta charset="[[++modx_charset]]">
 <meta name="description" content="[[*description]]">

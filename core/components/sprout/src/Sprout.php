@@ -1,7 +1,7 @@
 <?php
-namespace Sprout;
+namespace FractalFarming\Sprout;
 
-use MODX\Revolution\modX;
+use modX;
 
 class Sprout
 {
@@ -63,4 +63,27 @@ class Sprout
         return $option;
     }
 
+    /**
+     * Generate path for static file, based on resource alias.
+     *
+     * @param string $uri The resource URI.
+     * @param array $properties An array of options that override local options.
+     *
+     * @return string
+     */
+    public function getStaticPath(string $uri, $properties = [])
+    {
+        $staticPath = $this->modx->getOption('static_path', $properties, MODX_BASE_PATH . 'static/') . $uri;
+
+        // Add .html extension if needed and create index for category pages
+        if (substr($staticPath, -5) == '.html') {
+            return $staticPath;
+        }
+        elseif (substr($staticPath, -1) == '/') {
+            return $staticPath . 'index.html';
+        }
+        else {
+            return $staticPath . '.html';
+        }
+    }
 }

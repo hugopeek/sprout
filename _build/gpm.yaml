@@ -18,6 +18,20 @@ chunks:
   - name: sproutFooter
     file: footer.tpl
 
+snippets:
+  - name: sproutProcessMarkdown
+    file: processmarkdown.php
+
+plugins:
+  - name: sproutGenerateHTML
+    file: generatehtml.php
+    events:
+      - OnBeforeSaveWebPageCache
+      - OnDocFormSave
+      - OnDocUnPublished
+      - OnResourceDelete
+      - OnWebPagePrerender
+
 templates:
   - name: sproutOverview
     file: overview.tpl

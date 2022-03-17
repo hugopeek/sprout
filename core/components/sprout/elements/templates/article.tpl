@@ -10,7 +10,7 @@
 [[$sproutMenu]]
 
 <main class="container">
-    [[*content]]
+    [[*content:sproutProcessMarkdown]]
 </main>
 
 [[$sproutFooter]]
