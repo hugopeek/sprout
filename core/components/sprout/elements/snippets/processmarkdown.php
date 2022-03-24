@@ -11,9 +11,6 @@
  * https://commonmark.thephpleague.com/2.2/extensions/front-matter/
  */
 
-namespace FractalFarming\Sprout;
-
-use modX;
 use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\Extension\GithubFlavoredMarkdownExtension;

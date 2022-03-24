@@ -11,9 +11,6 @@
  * OnWebPagePrerender is triggered on every page visit.
  */
 
-namespace FractalFarming\Sprout\GenerateHTML;
-
-use modX;
 use FractalFarming\Sprout\Sprout;
 //use Wa72\HtmlPageDom\HtmlPageCrawler;
 

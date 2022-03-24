@@ -17,6 +17,7 @@
     "require": {
         "league/commonmark": "^2.2",
         "wa72/htmlpagedom": "2.0.*",
+        "symfony/yaml": "^5.4",
         "picocss/pico": "^1.5"
     },
     "repositories" : [{

@@ -5,7 +5,7 @@ use modX;
 
 class Sprout
 {
-    /** @var \MODX\Revolution\modX $modx */
+    /** @var modX $modx */
     public $modx;
 
     public $namespace = 'sprout';

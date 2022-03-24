@@ -21,6 +21,8 @@ chunks:
 snippets:
   - name: sproutProcessMarkdown
     file: processmarkdown.php
+  - name: sproutImportArticles
+    file: importarticles.php
 
 plugins:
   - name: sproutGenerateHTML
