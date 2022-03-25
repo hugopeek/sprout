@@ -11,6 +11,15 @@
 
 <main class="container">
     [[*content:sproutProcessMarkdown]]
+
+    [[pdoResources?
+        &parents=`[[*id]]`
+        &depth=`0`
+        &limit=`0`
+        &tpl=`sproutOverviewRow`
+        &showHidden=`0`
+        &tvPrefix=``
+    ]]
 </main>
 
 [[$sproutFooter]]
