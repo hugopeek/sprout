@@ -3,6 +3,7 @@
 ## Sprout 0.2.0
 Released on ...
 
+- Process links and Obsidian references
 - Add snippet for importing articles
 - Add plugin for generating static HTML
 - Add snippet for processing Markdown

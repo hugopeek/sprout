@@ -36,14 +36,14 @@ use Symfony\Component\Yaml\Yaml;
 
 require_once MODX_CORE_PATH . 'components/dirwalker/model/dirwalker/dirwalker.class.php';
 
-if (!class_exists(DirWalker::class)) {
-    $modx->log(modX::LOG_LEVEL_ERROR, 'DirWalker class not found.');
-}
-
 /**
  * @var modX $modx
  * @var array $scriptProperties
  */
+
+if (!class_exists(DirWalker::class)) {
+    $modx->log(modX::LOG_LEVEL_ERROR, 'DirWalker class not found.');
+}
 
 $searchStart = MODX_BASE_PATH . 'uploads/notes/';
 $dw = new DirWalker();
@@ -84,7 +84,7 @@ foreach($fileArray as $path => $filename) {
         $resource = $modx->newObject('modResource');
         $resource->fromArray($frontMatter['modx']);
         $resource->set('content_type', 1);
-        $resource->set('class_key', 'modStaticResource');
+        $resource->set('class_key', 'MODX\Revolution\modStaticResource');
         $resource->set('content', $relativePath);
         $resource->set('richtext', 0);
         $resource->set('show_in_tree', 1);

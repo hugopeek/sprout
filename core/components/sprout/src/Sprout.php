@@ -85,4 +85,19 @@ class Sprout
             return $staticPath . '.html';
         }
     }
+
+    /**
+     * Escape MODX tags
+     *
+     * @param string $html
+     * @return string
+     */
+    public function escapeTags(string $html)
+    {
+        return str_replace(
+            ['[', ']', '&amp;#96;', '{', '}'],
+            ['&#91;', '&#93;', '&#96;', '&#123;', '&#125;'],
+            $html
+        );
+    }
 }
