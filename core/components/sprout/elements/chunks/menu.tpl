@@ -1,6 +1,6 @@
 <nav class="container-fluid">
     <ul>
-        <li><a href="[[~[[++site_start]]]]" class="contrast"><strong>[[++site_name]]</strong></a></li>
+        <li><a class="logo" href="[[~[[++site_start]]]]"><strong>[[++site_name]]</strong></a></li>
     </ul>
     [[pdoMenu?
         &startId=`0`

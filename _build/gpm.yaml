@@ -1,5 +1,5 @@
 name: Sprout
-version: 0.1.1
+version: 0.2.0
 lowCaseName: sprout
 namespace: Sprout
 description: 'Lightweight site generator using static markdown files.'
@@ -46,3 +46,7 @@ templates:
   - name: sproutArticle
     file: article.tpl
     icon: icon-pencil
+
+systemSettings:
+  - key: custom_css_path
+    value:

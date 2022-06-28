@@ -7,3 +7,7 @@
 <base href="[[!++site_url]]">
 
 <link rel="stylesheet" href="assets/components/sprout/css/pico.min.css">
+<link rel="stylesheet" href="assets/components/sprout/css/sprout.css">
+[[++sprout.custom_css_path:notempty=`
+<link rel="stylesheet" href="[[++sprout.custom_css_path]]">
+`]]
