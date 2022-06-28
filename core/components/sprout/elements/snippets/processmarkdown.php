@@ -74,7 +74,8 @@ $dom = new HtmlPageCrawler($html);
 
 // Transform Obsidian links to HTML
 $dom->filter('h1, h2, h3, h4, h5, h6, p, li, blockquote')
-    ->each(function (HtmlPageCrawler $element) use ($ext, $assetsPath) {
+    ->each(function (HtmlPageCrawler $element) use ($ext, $assetsPath)
+    {
         $content = $element->getInnerHtml();
 
         $matchEmbed = '/\!\[\[([^\]]+)\]\]/'; // ![[some-image.jpg]]
@@ -87,17 +88,20 @@ $dom->filter('h1, h2, h3, h4, h5, h6, p, li, blockquote')
         preg_match_all($matchRef, $content,$refs, PREG_SET_ORDER);
 
         $dirty = 0;
-        foreach ($embeds as $embed) {
+        foreach ($embeds as $embed)
+        {
             if (!$embed) continue;
             $content = str_replace($embed[0], '<img src="'.$assetsPath.$embed[1].'" />', $content);
             $dirty = 1;
         }
-        foreach ($pipedRefs as $ref) {
+        foreach ($pipedRefs as $ref)
+        {
             if (!$ref) continue;
             $content = str_replace($ref[0], '<a href="'.$ref[1].$ext.'">'.$ref[2].'</a>', $content);
             $dirty = 1;
         }
-        foreach ($refs as $ref) {
+        foreach ($refs as $ref)
+        {
             if (!$ref) continue;
             $content = str_replace($ref[0], '<a href="'.$ref[1].$ext.'">'.$ref[1].'</a>', $content);
             $dirty = 1;
@@ -113,7 +117,8 @@ $dom->filter('h1, h2, h3, h4, h5, h6, p, li, blockquote')
 
 // Modify links
 $dom->filter('a')
-    ->each(function (HtmlPageCrawler $link) use ($modx, $ext) {
+    ->each(function (HtmlPageCrawler $link) use ($modx, $ext)
+    {
         $href = $link->getAttribute('href');
         $href = str_replace('.md', $ext, $href);
 
@@ -121,10 +126,10 @@ $dom->filter('a')
         $link->setAttribute('href', $href);
 
         // Internal link
-        if ($link->hasClass('external') === false) {
-
+        if ($link->hasClass('external') === false)
+        {
             // Prepend anchor link with URI
-            if (strpos($href, '#') === 0) {
+            if (str_starts_with($href, '#')) {
                 $link
                     ->addClass('contrast')
                     ->setAttribute('href', $modx->resource->get('uri') . $href)
@@ -136,9 +141,39 @@ $dom->filter('a')
             $query = $modx->newQuery('modResource');
             $query->where(['uri' => $href]);
             $query->select('id');
+
             if (!$modx->getValue($query->prepare())) {
                 $link->addClass('secondary');
             }
+        }
+    })
+;
+
+// Modify images
+$dom->filter('img')
+    ->each(function (HtmlPageCrawler $image) use ($assetsPath)
+    {
+        $src = $image->getAttribute('src');
+
+        // Add assets path to regularly formatted images
+        if (!str_contains($src, $assetsPath)) {
+            $src = str_replace('assets/attachments/', $assetsPath, $src);
+            $image->setAttribute('src', $src);
+        }
+
+        // Add class to parent element
+        $image->parents()->addClass('image');
+    })
+;
+
+// Detect footer inside quotes
+$dom->filter('blockquote p:last-child')
+    ->each(function (HtmlPageCrawler $quote)
+    {
+        $content = $quote->getInnerHtml();
+
+        if (str_contains($content, '—')) {
+            $quote->replaceWith("<footer>$content</footer>");
         }
     })
 ;

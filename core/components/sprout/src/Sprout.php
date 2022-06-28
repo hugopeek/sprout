@@ -70,15 +70,15 @@ class Sprout
      *
      * @return string
      */
-    public function getStaticPath(string $uri, $properties = [])
+    public function getStaticPath(string $uri, array $properties = []): string
     {
         $staticPath = $this->modx->getOption('static_path', $properties, MODX_BASE_PATH . 'static/') . $uri;
 
         // Add .html extension if needed and create index for category pages
-        if (substr($staticPath, -5) == '.html') {
+        if (str_ends_with($staticPath, '.html')) {
             return $staticPath;
         }
-        elseif (substr($staticPath, -1) == '/') {
+        elseif (str_ends_with($staticPath, '/')) {
             return $staticPath . 'index.html';
         }
         else {
@@ -92,7 +92,7 @@ class Sprout
      * @param string $html
      * @return string
      */
-    public function escapeTags(string $html)
+    public function escapeTags(string $html): string
     {
         return str_replace(
             ['[', ']', '&amp;#96;', '{', '}'],
